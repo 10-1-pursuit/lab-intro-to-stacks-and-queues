@@ -17,6 +17,15 @@ class Stack {
     newNode.next = this.top
     this.top = newNode
   }
+  peek() {
+    if (this.top === null) {
+      throw new Error("Stack is empty!")
+    }
+    return this.top
+  }
+  size() {
+
+  }
 }
 
 
