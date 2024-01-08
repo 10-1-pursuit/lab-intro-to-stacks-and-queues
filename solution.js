@@ -8,6 +8,17 @@ class Node {
   }
 }
 
+class Stack {
+  constructor(top = null) {
+    this.top = top
+  }
+  push(data) {
+    const newNode = new Node(data)
+    newNode.next = this.top
+    this.top = newNode
+  }
+}
+
 
 
 
