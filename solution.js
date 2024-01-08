@@ -24,8 +24,18 @@ class Stack {
     return this.top
   }
   size() {
+    let count = 0
+    let currentNode = this.top
+    while (this.top) {
+      count++
+      currentNode = currentNode.next
+    }
+    return count
+  }
+  pop() {
 
   }
+
 }
 
 
