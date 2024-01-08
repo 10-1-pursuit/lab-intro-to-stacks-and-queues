@@ -25,17 +25,27 @@ class Stack {
   }
   size() {
     let count = 0
-    let currentNode = this.top
-    while (this.top) {
+    let currentTop = this.top
+    while (currentTop) {
       count++
-      currentNode = currentNode.next
+      currentTop = currentTop.next
     }
     return count
   }
   pop() {
-
+    if (this.top === null) {
+      throw new Error("This stack is empty!")
+    }
+    let currentTop = this.top
+    if (currentTop) {
+      let newTop = currentTop.next
+      this.top = newTop
+    }
+    return currentTop
   }
-
+  isEmpty() {
+    return this.top === null
+  }
 }
 
 
