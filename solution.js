@@ -46,8 +46,24 @@ class Stack {
   isEmpty() {
     return this.top === null
   }
-}
 
+  findMin() {
+    let currentTop = this.top
+    let minValue = 0
+    if (currentTop !== null) {
+      if (currentTop.value < minValue) {
+        minValue = currentTop.value
+      }
+    }
+    return minValue
+  }
+
+
+  sort() {
+
+  }
+
+}
 
 
 
