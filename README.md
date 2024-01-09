@@ -53,9 +53,9 @@ You will
   - top
 - Stack methods
 
-  - `push`
+  - `push`✅
   - `size`
-  - `pop`
+  - `pop`✅
   - `isEmpty` check if list is empty
   - `findMin` data value
   - `peek` top node
