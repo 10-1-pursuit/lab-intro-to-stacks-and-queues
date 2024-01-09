@@ -58,12 +58,21 @@ class Stack {
     return minValue
   }
 
-
   sort() {
+    let arr = []
 
+    while (!this.isEmpty()) {
+      arr.push(this.pop())
+      arr.sort = ((a, b) => a - b)
+
+      for (const item in arr) {
+        this.push(item)
+      }
+    }
   }
-
 }
+
+
 
 
 
