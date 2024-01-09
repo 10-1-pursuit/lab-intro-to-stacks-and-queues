@@ -72,9 +72,9 @@ class Stack {
       }
 
       if (firstNode !== currentTop) {
-        let currentTopData = firstNode.data
-        currentTop.data = first.data
-        secondNode.data = currentTopData
+        let currentTopData = currentTop.data
+        currentTop.data = firstNode.data
+        firstNode.data = currentTopData
       }
 
       currentTop = currentTop.next;
