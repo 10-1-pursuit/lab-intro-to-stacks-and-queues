@@ -2,9 +2,9 @@ const { nums, words } = require("./data/data.js");
 const { inspect } = require("util");
 
 class Node {
-  constructor(data) {
+  constructor(data, next = null) {
     this.data = data;
-    this.next = null;
+    this.next = next;
   }
 }
 
@@ -12,6 +12,13 @@ class Stack {
   constructor(top = null) {
     this.top = top;
   }
+
+  push(data) {
+    const newStack = new Node(data);
+    newStack.next = this.top;
+    this.top = newStack;
+  }
+
 }
 
 class Queue {
