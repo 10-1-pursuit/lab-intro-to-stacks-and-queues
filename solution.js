@@ -60,15 +60,21 @@ class Stack {
 
   sort() {
     let arr = []
+    let newStack = new Stack()
 
     while (!this.isEmpty()) {
-      arr.push(this.pop())
-      arr.sort = ((a, b) => a - b)
-
-      for (const item in arr) {
-        this.push(item)
-      }
+      arr.push(this.pop().data)
     }
+    const sortArr = arr.sort((a, b) => {
+      if (a < b) return -1
+      else if (a > b) return 1
+      else return 0
+
+    })
+    for (let i = 0; i < arr.length; i++) {
+      newStack.push(sortArr.pop().data)
+    }
+    this.top = newStack.top
   }
 }
 
@@ -77,9 +83,9 @@ class Queue {
     this.first = null
     this.last = null
     this.size = 0
-    this.max = max
+    this.max = 0
   }
-  enqueue() {
+  enqueue(data) {
     let newNode = new Node(data)
 
     if (!this.first) {
