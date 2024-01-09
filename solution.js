@@ -79,7 +79,18 @@ class Queue {
     this.size = 0
     this.max = max
   }
+  enqueue() {
+    let newNode = new Node(data)
 
+    if (!this.first) {
+      this.first = newNode
+      this.last = newNode
+    } else {
+      this.last.next = newNode
+      this.last = newNode
+    }
+    return ++this.size
+  }
 
 
 
