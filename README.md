@@ -54,11 +54,11 @@ You will
 - Stack methods
 
   - `push`✅
-  - `size`
+  - `size`✅
   - `pop`✅
-  - `isEmpty` check if list is empty
+  - `isEmpty`✅ check if list is empty
   - `findMin` data value
-  - `peek` top node
+  - `peek`✅ top node
   - `sort` - sort the stack into ascending order. **CHALLENGE** only use stacks to achieve this (no arrays or objects etc.)
 
 - Create a queue with properties
