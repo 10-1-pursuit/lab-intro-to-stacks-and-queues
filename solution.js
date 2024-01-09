@@ -46,38 +46,43 @@ class Stack {
   isEmpty() {
     return this.top === null
   }
-
   findMin() {
     let currentTop = this.top
-    let minValue = 0
-    if (currentTop !== null) {
-      if (currentTop.value < minValue) {
-        minValue = currentTop.value
+    let minValue = currentTop.data
+    while (currentTop) {
+      if (currentTop.data < minValue) {
+        minValue = currentTop.data
       }
+      currentTop = currentTop.next
     }
     return minValue
   }
 
   sort() {
-    let arr = []
-    let newStack = new Stack()
+    let currentTop = this.top
+    while (currentTop) {
+      let firstNode = currentTop
+      let secondNode = currentTop.next
 
-    while (!this.isEmpty()) {
-      arr.push(this.pop().data)
-    }
-    const sortArr = arr.sort((a, b) => {
-      if (a < b) return -1
-      else if (a > b) return 1
-      else return 0
+      while (secondNode) {
+        if (secondNode.data < firstNode.data) {
+          firstNode = secondNode
+        }
+        secondNode = secondNode.next
+      }
 
-    })
-    for (let i = 0; i < arr.length; i++) {
-      newStack.push(sortArr.pop().data)
+      if (firstNode !== currentTop) {
+        let currentTopData = firstNode.data
+        currentTop.data = first.data
+        secondNode.data = currentTopData
+      }
+
+      currentTop = currentTop.next;
     }
-    this.top = newStack.top
+
+    return this;
   }
 }
-
 class Queue {
   constructor() {
     this.first = null
@@ -130,7 +135,21 @@ class Queue {
     return count
   }
   getLast() {
-
+    if (this.last === null) {
+      throw new Error("No last node exists")
+    }
+    return this.last
+  }
+  findMax() {
+    let firstNode = this.first
+    let maxValue = firstNode.data
+    while (firstNode) {
+      if (firstNode.data > maxValue) {
+        maxValue = firstNode.data
+      }
+      firstNode = firstNode.next
+    }
+    return maxValue
   }
 }
 
