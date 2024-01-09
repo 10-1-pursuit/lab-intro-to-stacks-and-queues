@@ -108,7 +108,12 @@ class Queue {
     this.size--
     return firstNode.data
   }
-
+  peek() {
+    if (this.first === null) {
+      throw new Error("The queue is Empty")
+    }
+    return this.first
+  }
 
 }
 
