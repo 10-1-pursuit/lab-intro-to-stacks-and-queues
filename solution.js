@@ -28,6 +28,22 @@ class Queue {
     this.size = 0;
     this.maxValue = null;
   }
+
+  enqueue(data) {
+    const newNode = { data };
+    if (this.size === 0) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.size++;
+    if (this.maxValue === null || data > this.maxValue) {
+      this.maxValue = data;
+    }
+  }
+
 }
 
 
