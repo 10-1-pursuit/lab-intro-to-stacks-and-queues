@@ -23,7 +23,8 @@ class Node{
     }
     let item=this.top
     if(item){
-      this.top=item.next
+      let newItem = item.next;
+      this.top = newItem;
       return item;
     }
   }
@@ -48,6 +49,37 @@ class Node{
     return count
 
   }
+  
+
+  
+   sort() {
+    let current = this.top;
+      while (current) {
+      let minNode = current;
+      let nextNode = current.next;
+  
+      while (nextNode) {
+        if (nextNode.data < minNode.data) {
+          minNode = nextNode;
+        }
+        nextNode = nextNode.next;
+      }
+  
+      if (minNode !== current) {
+        const temp = current.data;
+        current.data = minNode.data;
+        minNode.data = temp;
+      }
+  
+      current = current.next;
+    }
+  
+    return this;
+  }
+  findMin(){
+    return this.sort().peek().data
+  }
+  
  }
 
  let myList=new Stack()
@@ -56,10 +88,11 @@ class Node{
 
  }
 
- console.log(myList.size())
-//  console.log(inspect(myList, { showHidden:true ,colors: true, depth: 11 }));
+//  console.log(newStack.size())
+console.log(myList.findMin())
 
-
+// console.log(inspect(myList.sort()))
+ //console.log(inspect(myList, { showHidden:true ,colors: true, depth: 12 }));
 module.exports = {
   Node,
   // Queue,
