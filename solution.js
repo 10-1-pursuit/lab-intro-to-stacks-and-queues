@@ -120,7 +120,18 @@ class Queue {
     }
     return this.first
   }
+  count() {
+    let count = 0
+    let firstNode = this.first
+    while (firstNode) {
+      count++
+      firstNode = firstNode.next
+    }
+    return count
+  }
+  getLast() {
 
+  }
 }
 
 
