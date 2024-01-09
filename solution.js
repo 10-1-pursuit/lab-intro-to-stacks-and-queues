@@ -92,6 +92,22 @@ class Queue {
     return ++this.size
   }
 
+  isEmpty() {
+    return this.first === null
+  }
+
+  dequeue() {
+    if (this.first === null) {
+      throw new Error("The queue is empty")
+    }
+    const firstNode = this.first
+    if (this.first === this.last) {
+      this.last = null
+    }
+    this.first = this.first.next
+    this.size--
+    return firstNode.data
+  }
 
 
 }
