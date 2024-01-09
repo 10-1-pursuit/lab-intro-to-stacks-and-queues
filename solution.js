@@ -91,10 +91,67 @@ class Node{
 //  console.log(newStack.size())
 console.log(myList.findMin())
 
+
+
 // console.log(inspect(myList.sort()))
  //console.log(inspect(myList, { showHidden:true ,colors: true, depth: 12 }));
+
+
+ class Queue{
+constructor(){
+  this.first=null
+  this.last=null
+  this.size=0
+  this.max=0
+}
+enqueue(dataProp){
+  let newItem= new Node(dataProp)
+    if(!this.first){
+      this.first=newItem
+      this.last=newItem
+    }else{
+      this.last.next=newItem
+      this.last=newItem
+    }
+    return ++this.size;
+
+
+}
+dequeue(){
+  if(this.first === null){
+    throw new Error('The queue is Empty/Insert Node')
+  }
+  const currentItem=this.first
+  if(this.first===this.last){
+    this.last=null
+  }
+  this.first=this.first.next
+  this.size--;
+  return currentItem.data;
+
+}
+peek(){
+  if(this.first===null){
+    throw new Error('The queue is Empty/Insert Node')
+  }
+  return this.first
+}
+isEmpty(){
+  return this.first===null;
+}
+count(){
+  let count=0
+  let currentNode=this.first
+  while(currentNode){
+    ++count
+    currentNode=currentNode.next
+  }
+  return count
+}
+
+ }
 module.exports = {
   Node,
-  // Queue,
+  Queue,
   Stack,
 };

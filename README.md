@@ -57,23 +57,23 @@ You will
   - `size`✅
   - `pop`✅
   - `isEmpty`✅ check if list is empty
-  - `findMin` data value
+  - `findMin`✅  data value
   - `peek`✅ top node
-  - `sort` - sort the stack into ascending order. **CHALLENGE** only use stacks to achieve this (no arrays or objects etc.)
+  - `sort`✅  - sort the stack into ascending order. **CHALLENGE** only use stacks to achieve this (no arrays or objects etc.)
 
 - Create a queue with properties
 
-  - `first`
-  - `last`
-  - `size`
-  - `max` value
+  - `first✅ `
+  - `last✅ `
+  - `size✅ `
+  - `max` value✅ 
 
 - Stack methods
 
-  - `count`
-  - `dequeue`
-  - `enqueue`
+  - `count`✅ 
+  - `dequeue`✅ 
+  - `enqueue`✅ 
   - `findMax` data value
   - `getLast` node
-  - `isEmpty` check if list is empty
-  - `peek` the first node
+  - `isEmpty`✅  check if list is empty
+  - `peek`✅  the first node
