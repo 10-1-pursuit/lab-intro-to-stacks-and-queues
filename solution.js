@@ -148,8 +148,40 @@ count(){
   }
   return count
 }
+findMax(){
+  let current=this.first
+  while(current){
+    let maxNode=current
+    let nextNode=current.next
 
- }
+    while(nextNode){
+      if(nextNode.data>maxNode.data){
+        maxNode=nextNode
+      }
+      nextNode=nextNode.next
+    }
+    if (maxNode !== current) {
+      const temp = current.data;
+      current.data = maxNode.data;
+      maxNode.data = temp;
+    }
+
+    current = current.next;
+  }
+
+  return this.peek().data;
+
+
+
+
+  }
+  getLast(){
+    return this.last;
+  }
+  
+}
+
+ 
 module.exports = {
   Node,
   Queue,

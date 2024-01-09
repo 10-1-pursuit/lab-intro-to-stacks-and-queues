@@ -73,7 +73,7 @@ You will
   - `count`✅ 
   - `dequeue`✅ 
   - `enqueue`✅ 
-  - `findMax` data value
+  - `findMax`✅ data value
   - `getLast` node
   - `isEmpty`✅  check if list is empty
   - `peek`✅  the first node
