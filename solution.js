@@ -98,11 +98,11 @@ console.log(myList.findMin())
 
 
  class Queue{
-constructor(){
+constructor(max=null){
   this.first=null
   this.last=null
   this.size=0
-  this.max=0
+  this.max=max
 }
 enqueue(dataProp){
   let newItem= new Node(dataProp)
@@ -169,6 +169,7 @@ findMax(){
     current = current.next;
   }
 
+  this.max=this.peek().data
   return this.peek().data;
 
 
@@ -180,6 +181,13 @@ findMax(){
   }
   
 }
+let myQueue=new Queue()
+ for(let i=0;i<nums.length;i++){
+  myQueue.enqueue(nums[i])
+
+ }
+ console.log(myQueue.findMax())
+ console.log(myQueue)
 
  
 module.exports = {

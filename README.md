@@ -74,6 +74,6 @@ You will
   - `dequeue`✅ 
   - `enqueue`✅ 
   - `findMax`✅ data value
-  - `getLast` node
+  - `getLast`✅ node
   - `isEmpty`✅  check if list is empty
   - `peek`✅  the first node
