@@ -51,7 +51,18 @@ class Stack {
     return this.top
   }
   findMin(){
-
+    if (!this.top) {
+      return null;
+    }
+    let current = this.top;
+    let min = current.data;
+    while (current) {
+      if (current.data < min) {
+        min = current.data;
+      }
+      current = current.next;
+    }
+    return min;
   }
   sort(){
 
@@ -65,7 +76,60 @@ class Queue {
     this.size = 0
     this.max = value
   }
+
+  count(){
+    return this.size
+  }
+  dequeue(){
+    if(this.first == null){
+      throw new Error("The queue is empty")
+  }
+    const firstNode = this.first
+    if(this.first === this.last){
+      this.last = null
+  }
+    this.first = this.first.next
+    this.size--
+  return firstNode.data
+  }
+  enqueue(data){
+    let newNode = new Node(data)
+    if(!this.first){
+        this.first = newNode
+        this.last = newNode
+    }
+    else {
+        this.last.next = newNode 
+        this.last = newNode
+    }
+    return ++this.size
+  }
+  findMax(){
+    let currentNode = this.first
+    let maxVal = currentNode.data
+    while(currentNode.next){
+      currentNode = currentNode.next
+      if(currentNode.data > maxVal){
+        maxVal = currentNode.data
+      }
+    }
+    return maxVal
+  }
+  getLast(){
+    return this.last
+  }
+  isEmpty(){
+    return !this.first
+  }
+  peek(){
+    if(!this.first){
+        throw new Error("The queue is empty")
+    }
+    return this.first
+  }
 }
+
+
 
 
 module.exports = {
