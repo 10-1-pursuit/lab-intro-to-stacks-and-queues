@@ -21,6 +21,16 @@ class Stack {
 
 const newStack = new Stack();
 
+
+
+class Queue {
+  constructor(){
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+}
+
 module.exports = {
   Node,
   Queue,
