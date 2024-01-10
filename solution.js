@@ -9,7 +9,7 @@ class Node {
 }
 
 class Stack {
-  constructor(top) {
+  constructor() {
     this.top = null;
   }
   push(data) {
@@ -37,7 +37,6 @@ class Stack {
   isEmpty() {
     return this.top === null;
   }
-
   findMin() {
     if (this.isEmpty()) {
       return null;
@@ -56,7 +55,15 @@ class Stack {
     }
     return min;
   }
-
+  toArray(){
+  let arr = [];
+    let current = this.top;
+    while (current) {
+      arr.push(current.data); 
+      current = current.next;
+    }
+    return arr;
+  }
   peek() {
     return this.isEmpty() ? null : this.top;
   }
@@ -93,11 +100,10 @@ class Queue {
   }
   peek() {
     if (this.first == null) {
-      throw new Error("This stack is empty");
+      throw new Error("This queue is empty");
     }
     return this.first;
   }
-
   enqueue(data) {
     let newNode = new Node(data);
     if (!this.first) {
@@ -109,7 +115,6 @@ class Queue {
     }
     return ++this.size;
   }
-
   count() {
     let count = 0;
     let currentNode = this.first;
@@ -119,7 +124,6 @@ class Queue {
     }
     return count;
   }
-
   dequeue() {
     if (this.first == null) {
       throw new Error("The queue is big empty");
@@ -132,7 +136,6 @@ class Queue {
     this.size--;
     return newLast.data;
   }
-
   findMax() {
     if (this.isEmpty()) return null;
     this.max = this.first.data;
@@ -143,12 +146,20 @@ class Queue {
     }
     return this.max;
   }
-
   getLast() {
     if (!this.last) {
-      throw new Error("This stack is empty");
+      throw new Error("This queue is empty");
     }
     return this.last;
+  }
+  reverse() {
+    let stack = new Stack();
+    while (!this.isEmpty()) {
+      stack.push(this.dequeue());
+    }
+    while (!stack.isEmpty()) {
+      this.enqueue(stack.pop().data);
+    }
   }
 }
 
@@ -161,10 +172,11 @@ const yourStack = new Stack();
 
 myStack.push(node2);
 myStack.push(node3);
+myStack.push(29);
 yourStack.push(9);
 yourStack.push(node1);
-// myStack.push(19);
-myStack.push(29);
+yourStack.push(19);
+console.log("my Stack Contents:", myStack.toArray());
 
 let myQueue = new Queue();
 let yourQueue = new Queue();
@@ -174,16 +186,30 @@ while (!myStack.isEmpty()) {
 }
 
 while (!yourStack.isEmpty()) {
-  // while (myStack.size() < yourStack.size()) {
-    yourQueue.enqueue(yourStack.pop().data);
-  // }
+  yourQueue.enqueue(yourStack.pop().data);
 }
 
-console.log(myQueue.peek());
-console.log(myQueue.getLast());
-console.log(myQueue.count());
-console.log(myQueue.findMax());
-console.log(yourQueue);
+
+ 
+  if (myQueue.count() > yourQueue.count()) {
+      console.log("MyQueue is larger");
+  } else if (myQueue.count() < yourQueue.count()) {
+      console.log("YourQueue is larger");
+  } else {
+   console.log(myQueue.count() )
+   console.log(yourQueue.count() )
+   this.count++
+  }
+
+
+
+console.log('1st in my queue', myQueue.peek().data);
+console.log('last in my queue', myQueue.getLast().data);
+// console.log(myQueue.count());
+// console.log(myQueue.findMax());
+console.log('last in your queue', yourQueue.last.data);
+console.log("reverse my Stack Contents:", myQueue.reverse());
+
 
 module.exports = {
   Node,
