@@ -55,11 +55,11 @@ class Stack {
     }
     return min;
   }
-  toArray(){
-  let arr = [];
+  toArray() {
+    let arr = [];
     let current = this.top;
     while (current) {
-      arr.push(current.data); 
+      arr.push(current.data);
       current = current.next;
     }
     return arr;
@@ -189,38 +189,25 @@ while (!yourStack.isEmpty()) {
   yourQueue.enqueue(yourStack.pop().data);
 }
 
+if (myQueue.count() > yourQueue.count()) {
+  console.log("MyQueue is larger");
+} else if (myQueue.count() < yourQueue.count()) {
+  console.log("YourQueue is larger");
+} else {
+  console.log(myQueue.count());
+  console.log(yourQueue.count());
+  this.count++;
+}
 
- 
-  if (myQueue.count() > yourQueue.count()) {
-      console.log("MyQueue is larger");
-  } else if (myQueue.count() < yourQueue.count()) {
-      console.log("YourQueue is larger");
-  } else {
-   console.log(myQueue.count() )
-   console.log(yourQueue.count() )
-   this.count++
-  }
-
-
-
-console.log('1st in my queue', myQueue.peek().data);
-console.log('last in my queue', myQueue.getLast().data);
+console.log("1st in my queue", myQueue.peek().data);
+console.log("last in my queue", myQueue.getLast().data);
 // console.log(myQueue.count());
 // console.log(myQueue.findMax());
-console.log('last in your queue', yourQueue.last.data);
+console.log("last in your queue", yourQueue.last.data);
 console.log("reverse my Stack Contents:", myQueue.reverse());
-
 
 module.exports = {
   Node,
   Queue,
   Stack,
 };
-
-// `count`
-//   - `dequeue`
-//   - `enqueue`
-//   - `findMax` data value
-//   - `getLast` node
-//   - `isEmpty` check if list is empty
-//   - `peek` the first node
