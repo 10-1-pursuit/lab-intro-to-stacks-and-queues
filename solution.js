@@ -51,14 +51,33 @@ class Stack {
     return this.top
   }
   findMin(){
-    // might have to pass in data
-    // check current node value to see if it is less than the current node.next value
-    // if current node is less leave it and move to the next node value and repeat process
-    // if number is greater swap with the prev node and move to the next node value and repeat process
+    let currentNode = this.top
+    let minVal = currentNode.data
+    while(currentNode.next){
+      currentNode = currentNode.next
+      if(currentNode.data < minVal){
+        minVal = currentNode.data
+      }
+    }
+    return minVal
   }
-  sort(){
-    // check current node value to see if it's greater than the current node.next 
-    // whichever number is greater becomes the next
+  // Solved the sort() method with help from stackoverflow & Youtube
+  sort() {
+    const tempStack = new Stack();
+    let currentNode = this.top;
+    while (currentNode) {
+      const tempNode = currentNode;
+      currentNode = currentNode.next;
+      while (tempStack.top && tempStack.top.data > tempNode.data) {
+        const poppedNodes = tempStack.pop();
+        this.push(poppedNodes.data);
+      }
+      tempStack.push(tempNode.data);
+    }
+    while (tempStack.top) {
+      const poppedNodes = tempStack.pop();
+      this.push(poppedNodes.data);
+    }
   }
 }
 
@@ -67,29 +86,59 @@ class Queue {
     this.first = null
     this.last = null
     this.size = 0
-    this.max = value
+    this.value = value
+  }
+  count(){
+    return this.size
+  }
+  dequeue(){
+    if(this.first == null){
+      throw new Error("The queue is empty")
+  }
+    const firstNode = this.first
+    if(this.first === this.last){
+      this.last = null
+  }
+    this.first = this.first.next
+    this.size--
+  return firstNode.data
+  }
+  enqueue(data){
+    let newNode = new Node(data)
+    if(!this.first){
+        this.first = newNode
+        this.last = newNode
+    }
+    else {
+        this.last.next = newNode 
+        this.last = newNode
+    }
+    return ++this.size
+  }
+  findMax(){
+    let currentNode = this.first
+    let maxVal = currentNode.data
+    while(currentNode.next){
+      currentNode = currentNode.next
+      if(currentNode.data > maxVal){
+        maxVal = currentNode.data
+      }
+    }
+    return maxVal
+  }
+  getLast(){
+    return this.last
+  }
+  isEmpty(){
+    return !this.first
+  }
+  peek(){
+    if(!this.first){
+        throw new Error("The queue is empty")
+    }
+    return this.first
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = {
