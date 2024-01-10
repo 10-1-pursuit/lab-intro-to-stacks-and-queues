@@ -13,9 +13,9 @@ class Stack {
     this.top = null;
   }
   push(data) {
-    const newNode = new Node(data);
-    newNode.next = this.top;
-    this.top = newNode;
+    const createNode = new Node(data);
+    createNode.next = this.top;
+    this.top = createNode;
   }
   size() {
     let count = 0;
@@ -70,7 +70,7 @@ class Stack {
         //  new top goes to original for comp
         this.push(tempStack.pop().data);
       }
-      // lager # stays in new instance for comp
+      // larger # stays in new instance for comparison
       tempStack.push(oGtemp.data);
     }
     while (!tempStack.isEmpty()) {
@@ -83,27 +83,118 @@ class Stack {
 
 class Queue {
   constructor() {
-    this.first = first;
-    this.last = last;
-    this.size = size;
-    max = 0;
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+    this.max = null;
+  }
+  isEmpty() {
+    return this.first === null;
+  }
+  peek() {
+    if (this.first == null) {
+      throw new Error("This stack is empty");
+    }
+    return this.first;
+  }
+
+  enqueue(data) {
+    let newNode = new Node(data);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    return ++this.size;
+  }
+
+  count() {
+    let count = 0;
+    let currentNode = this.first;
+    while (currentNode) {
+      count++;
+      currentNode = currentNode.next;
+    }
+    return count;
+  }
+
+  dequeue() {
+    if (this.first == null) {
+      throw new Error("The queue is big empty");
+    }
+    const newLast = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return newLast.data;
+  }
+
+  findMax() {
+    if (this.isEmpty()) return null;
+    this.max = this.first.data;
+    let current = this.first;
+    while (current) {
+      if (current.data > this.max) this.max = current.data;
+      current = current.next;
+    }
+    return this.max;
+  }
+
+  getLast() {
+    if (!this.last) {
+      throw new Error("This stack is empty");
+    }
+    return this.last;
   }
 }
 
 const node1 = new Node(31);
 const node2 = new Node(22);
 const node3 = new Node(13);
-const node4 = new Node(3);
-const node5 = new Node(3);
-const myStack = new Stack();
 
-myStack.push(node1);
+const myStack = new Stack();
+const yourStack = new Stack();
+
 myStack.push(node2);
 myStack.push(node3);
-// console.log('top stack', myStack)
+yourStack.push(9);
+yourStack.push(node1);
+// myStack.push(19);
+myStack.push(29);
+
+let myQueue = new Queue();
+let yourQueue = new Queue();
+
+while (!myStack.isEmpty()) {
+  myQueue.enqueue(myStack.pop().data);
+}
+
+while (!yourStack.isEmpty()) {
+  // while (myStack.size() < yourStack.size()) {
+    yourQueue.enqueue(yourStack.pop().data);
+  // }
+}
+
+console.log(myQueue.peek());
+console.log(myQueue.getLast());
+console.log(myQueue.count());
+console.log(myQueue.findMax());
+console.log(yourQueue);
 
 module.exports = {
   Node,
   Queue,
   Stack,
 };
+
+// `count`
+//   - `dequeue`
+//   - `enqueue`
+//   - `findMax` data value
+//   - `getLast` node
+//   - `isEmpty` check if list is empty
+//   - `peek` the first node
