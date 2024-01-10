@@ -88,8 +88,8 @@ class Node{
 
  }
 
-//  console.log(newStack.size())
-console.log(myList.findMin())
+ console.log(myList.size())
+// console.log(myList.findMin())
 
 
 
@@ -113,8 +113,9 @@ enqueue(dataProp){
       this.last.next=newItem
       this.last=newItem
     }
-    return ++this.size;
-
+     ++this.size;
+     this.max=this.findMax()
+   
 
 }
 dequeue(){
@@ -148,33 +149,45 @@ count(){
   }
   return count
 }
-findMax(){
-  let current=this.first
-  while(current){
-    let maxNode=current
-    let nextNode=current.next
+// findMax(){
+  // let current=this.first
+  // while(current){
+  //   let maxNode=current
+  //   let nextNode=current.next
 
-    while(nextNode){
-      if(nextNode.data>maxNode.data){
-        maxNode=nextNode
+  //   while(nextNode){
+  //     if(nextNode.data>maxNode.data){
+  //       maxNode=nextNode
+  //     }
+  //     nextNode=nextNode.next
+  //   }
+  //   if (maxNode !== current) {
+  //     const temp = current.data;
+  //     current.data = maxNode.data;
+  //     maxNode.data = temp;
+  //   }
+
+  //   current = current.next;
+  // }
+  // const maxValue=this.peek().data
+  // this.max=maxValue
+  // return maxValue
+
+
+
+
+  //}
+  findMax() {
+    let current = this.first;
+    let max = null;
+  
+    while (current) {
+      if (max === null || current.data> max) {
+        max = current.data;
       }
-      nextNode=nextNode.next
+      current = current.next;
     }
-    if (maxNode !== current) {
-      const temp = current.data;
-      current.data = maxNode.data;
-      maxNode.data = temp;
-    }
-
-    current = current.next;
-  }
-
-  this.max=this.peek().data
-  return this.peek().data;
-
-
-
-
+    return max;
   }
   getLast(){
     return this.last;
@@ -186,10 +199,14 @@ let myQueue=new Queue()
   myQueue.enqueue(nums[i])
 
  }
+ console.log(myQueue)
+ console.log(myQueue.peek())
+  console.log(myQueue.getLast())
+  console.log(myList.peek())
+ 
+ 
  console.log(myQueue.findMax())
  console.log(myQueue)
-
- 
 module.exports = {
   Node,
   Queue,
