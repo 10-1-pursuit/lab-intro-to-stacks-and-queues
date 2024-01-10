@@ -65,7 +65,22 @@ class Stack {
     return min;
   }
   sort(){
+    let current = this.top;
 
+    while (current) {
+      let filteredNode = current.next;
+
+      while (filteredNode) {
+        if (current.data > filteredNode.data) {
+          const sideStack = current.data;
+          current.data = filteredNode.data;
+          filteredNode.data = sideStack;
+        }
+        filteredNode = filteredNode.next;
+      }
+      current = current.next;
+    }
+    return this;
   }
 }
 
