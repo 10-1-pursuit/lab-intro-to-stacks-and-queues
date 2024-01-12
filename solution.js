@@ -19,7 +19,20 @@ class Stack {
     this.top = newStack;
   }
 
+  pop() {
+    let current = this.top;
+    let next = null;
+    if (current) {
+      next = current.next;
+      this.top = next;
+      return current;
+    }
+  }
+
+
 }
+
+
 
 class Queue {
   constructor() {
